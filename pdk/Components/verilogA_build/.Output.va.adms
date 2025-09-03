@@ -1,0 +1,215 @@
+# 1 "./Output.va"
+
+
+# 1 "nature_fluid_dynamics.vams"
+
+nature Pressure
+     units = "Pa";
+     access = P;
+     
+endnature
+
+nature FluidFlow
+     units = "L/s";
+     access = Qfl;
+     
+endnature
+
+nature Concentration_ppm
+     units = "ppm";
+     access = PPM;
+     
+endnature
+
+nature Concentration_mole
+     units = "M";
+     access = C;
+     
+endnature
+
+nature Concentration_current
+     units = "M";
+     access = Ci;
+     
+endnature
+
+discipline fluidDynamics
+     domain continuous;
+     potential Pressure;
+     flow FluidFlow;
+enddiscipline
+
+discipline concentration
+    domain continuous;
+    potential Concentration_mole;
+    flow Concentration_current;
+enddiscipline
+
+# 4 "./Output.va"
+# 1 "disciplines.vams"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 25 "disciplines.vams"
+
+
+
+nature current
+  access = I;
+  units = "A";
+  abstol = 0.001234;
+endnature
+
+
+nature voltage
+  access = V;
+  units = "V";
+  abstol = 0.0004321;
+endnature
+
+
+nature power
+  access = Pwr;
+  units = "W";
+  abstol = 0.00101010;
+endnature
+
+
+nature flux
+  access = Phi;
+  units = "We";
+endnature
+
+
+nature temperature
+  access = Temp;
+  units = "K";
+  abstol = 3.14;
+endnature
+
+
+discipline thermal
+  potential temperature;
+  flow power;
+enddiscipline
+
+
+discipline electrical
+  potential voltage;
+  flow current;
+enddiscipline
+
+discipline magnetic
+  potential voltage; 
+  flow current; 
+enddiscipline
+
+discipline rotational_omega
+  potential voltage; 
+  flow current; 
+enddiscipline
+
+
+
+# 5 "./Output.va"
+# 1 "constants.vams"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 25 "constants.vams"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 6 "./Output.va"
+
+
+module Output(c_out, gnd);
+
+
+
+
+
+
+input c_out;
+output gnd;
+
+concentration c_out, c_term;
+
+
+
+
+
+analog begin
+   
+   C(c_out, gnd)  <+ - C(c_out) ;
+   
+   
+   
+   
+   
+end
+
+endmodule

@@ -1,0 +1,50 @@
+
+MACRO valve_40px_1
+  CLASS CORE ;
+  ORIGIN  0 0 ;
+  FOREIGN valve_40px_1 0 0 ;
+  SIZE 180 BY 180 ;
+  SYMMETRY X Y ;
+  SITE CoreSite ;
+  PIN in_fluid
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 20.5 89.5 21.5 90.5 ;
+    END
+  END in_fluid
+  PIN out_fluid
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 151.5 89.5 152.5 90.5 ;
+    END
+  END out_fluid
+  PIN in_air
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 89.5 24.5 90.5 25.5 ;
+    END
+  END in_air
+  PIN out_air
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 89.5 154.5 90.5 155.5 ;
+    END
+  END out_air
+  OBS
+    LAYER met1 ;
+      RECT 21 25 152 155 ;
+    LAYER met2 ;
+      RECT 21 25 152 155 ;
+    LAYER met3 ;
+      RECT 21 25 152 155 ;
+  END
+  PROPERTY CatenaDesignType "deviceLevel" ;
+END valve_40px_1

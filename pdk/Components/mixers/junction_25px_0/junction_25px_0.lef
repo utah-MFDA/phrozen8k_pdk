@@ -1,0 +1,38 @@
+
+MACRO junction_25px_0
+  CLASS CORE ;
+  ORIGIN  0 0 ;
+  FOREIGN junction_25px_0 0 0 ;
+  SIZE 65 BY 65 ;
+  SYMMETRY X Y ;
+  SITE CoreSite ;
+  PIN a_fluid
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 18.5 49.5 19.5 50.5 ;
+    END
+  END a_fluid
+  PIN b_fluid
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 54.5 49.5 55.5 50.5 ;
+    END
+  END b_fluid
+  PIN out_fluid
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 54.5 24.5 55.5 25.5 ;
+    END
+  END out_fluid
+  OBS
+    LAYER met1 ;
+      RECT 19 20 55 55 ;
+  END
+  PROPERTY CatenaDesignType "deviceLevel" ;
+END junction_25px_0
