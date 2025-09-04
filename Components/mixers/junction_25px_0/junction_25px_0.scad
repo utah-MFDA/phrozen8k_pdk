@@ -1,8 +1,8 @@
-use <../../../scad_include/routing.scad>
 use <../../../scad_include/lef_helper.scad>
+use <../../../scad_include/polychannel_v2.scad>
 
-px = 22e-3;
-layer = 10e-3;
+px = 0.022;
+layer = 0.01;
 
 module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
       
@@ -10,42 +10,20 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     hchan = 20*layer;
     Wchan = 9*px;
 
-    dim  = [
-            [[0,0],[-Wchan/2,Wchan/2],[0,hchan]], // 0
-            [[-Wchan/2,Wchan/2],[0,0],[0,hchan]], // 1
-                    
-           ];
-    
-    module obj(){
-        pi_0 = [-5*px, 25*px, 0];
-        pf_0 = [Wchan+20*px, 0, 0];
-        connect_0 = [
-                     ["+x", pf_0, 0]
-                    ];
-        routing(pi_0, connect_0, dim);
-        
-        pi_1 = [-5*px, 0*px, 0];
-        pf_1 = [Wchan, 0, 0];
-        connect_1 = [
-                     ["+x", pf_1, 0]
-                    ];
-        routing(pi_1, connect_1, dim);
+    eps = 0.01;
+    params_relative = [    
+    ["cube", [1*px, Wchan, hchan], [-4.5*px, 25*px, 0], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [39*px, 0, 0], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-9.5*px, 0, 0], [45, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-25*px, -25*px, 0], [45, [0, 0, 1]]],
+    // -29*px, -29*px, 0 
+    ["cube", [Wchan, eps*px, hchan], [-(5-(Wchan/2)/px)*px, (Wchan/(2*px))*px, 0], [0, [0, 0, 1]]],
+    // -1.5*px, 3.5*px, 0 for 22px 
+    ["cube", [Wchan, eps*px, hchan], [0, -Wchan, 0], [0, [0, 0, 1]]],
+];
 
-        pi_2 = [22*px, 25*px, 0];
-        pf_2 = [Wchan, 0, 0];
-        connect_2 = [
-                     ["+x", pf_2, 0]
-                    ];
-        routing(pi_2, connect_2, dim);
-  
-        pi_3 = [0, 0, 0];
-        pf_3 = [35.4*px, 0, 0];
-        connect_3 = [
-                     ["+x", pf_3, 0]
-                    ];
-        rotate(45)
-        routing(pi_3, connect_3, dim);  
-        
+    module obj(){
+        polychannel(params_relative, show_only_shapes=false);  
     }
     
     if (orientation == "FN"){
