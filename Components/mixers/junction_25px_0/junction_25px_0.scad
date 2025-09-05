@@ -13,8 +13,8 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     eps = 0.01;
     params_relative = [    
     ["cube", [1*px, Wchan, hchan], [-4.5*px, 25*px, ((hchan/2)/px)*px], [0, [0, 0, 1]]],
-    ["cube", [1*px, Wchan, hchan], [39*px, 0, 0], [0, [0, 0, 1]]],
-    ["cube", [1*px, Wchan, hchan], [-9.5*px, 0, 0], [45, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [35*px, 0, 0], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-5.5*px, 0, 0], [45, [0, 0, 1]]],
     ["cube", [1*px, Wchan, hchan], [-25*px, -25*px, 0], [45, [0, 0, 1]]],
     // -29*px, -29*px, 0 
     ["cube", [Wchan, eps*px, hchan], [-(5-(Wchan/2)/px)*px, (Wchan/(2*px))*px, 0], [0, [0, 0, 1]]],
