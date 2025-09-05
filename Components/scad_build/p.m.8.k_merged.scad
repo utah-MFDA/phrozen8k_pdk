@@ -407,43 +407,22 @@ module serpentine_300px_0(xpos, ypos, zpos, orientation){
     
 }
 module diffmix_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
-      
+    
     hchan = 20*layer;
     Wchan = 9*px;
 
-    dim  = [
-            [[0,0],[-Wchan/2,Wchan/2],[0,hchan]],            [[-Wchan/2,Wchan/2],[0,0],[0,hchan]],                    
-           ];
-    
+    eps = 0.01;
+    params_relative = [    
+    ["cube", [1*px, Wchan, hchan], [-4.5*px, 30*px, ((hchan/2)/px)*px], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [39*px, 0, 0], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-4.5*px, 0, 0], [45, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-30*px, -30*px, 0], [45, [0, 0, 1]]],
+    ["cube", [Wchan, eps*px, hchan], [-(5-(Wchan/2)/px)*px, (Wchan/(2*px))*px, 0], [0, [0, 0, 1]]],
+    ["cube", [Wchan, eps*px, hchan], [0, -Wchan, 0], [0, [0, 0, 1]]],
+];
     module obj(){
-        pi_0 = [-5*px, 30*px, 0];
-        pf_0 = [Wchan+22*px, 0, 0];
-        connect_0 = [
-                     ["+x", pf_0, 0]
-                    ];
-        routing(pi_0, connect_0, dim);
-        
-        pi_1 = [-5*px, 0*px, 0];
-        pf_1 = [Wchan, 0, 0];
-        connect_1 = [
-                     ["+x", pf_1, 0]
-                    ];
-        routing(pi_1, connect_1, dim);
-
-        pi_2 = [26*px, 30*px, 0];
-        pf_2 = [Wchan, 0, 0];
-        connect_2 = [
-                     ["+x", pf_2, 0]
-                    ];
-        routing(pi_2, connect_2, dim);
-  
-        pi_3 = [0, 0, 0];
-        pf_3 = [42.4*px, 0, 0];
-        connect_3 = [
-                     ["+x", pf_3, 0]
-                    ];
-        rotate(45)
-        routing(pi_3, connect_3, dim);  
+        color("RosyBrown")
+            polychannel(params_relative, show_only_shapes=false);  
         
     }
     
@@ -495,40 +474,19 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     hchan = 20*layer;
     Wchan = 9*px;
 
-    dim  = [
-            [[0,0],[-Wchan/2,Wchan/2],[0,hchan]],            [[-Wchan/2,Wchan/2],[0,0],[0,hchan]],                    
-           ];
-    
-    module obj(){
-        pi_0 = [-5*px, 25*px, 0];
-        pf_0 = [Wchan+20*px, 0, 0];
-        connect_0 = [
-                     ["+x", pf_0, 0]
-                    ];
-        routing(pi_0, connect_0, dim);
-        
-        pi_1 = [-5*px, 0*px, 0];
-        pf_1 = [Wchan, 0, 0];
-        connect_1 = [
-                     ["+x", pf_1, 0]
-                    ];
-        routing(pi_1, connect_1, dim);
+    eps = 0.01;
+    params_relative = [    
+    ["cube", [1*px, Wchan, hchan], [-4.5*px, 25*px, ((hchan/2)/px)*px], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [39*px, 0, 0], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-9.5*px, 0, 0], [45, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-25*px, -25*px, 0], [45, [0, 0, 1]]],
+    ["cube", [Wchan, eps*px, hchan], [-(5-(Wchan/2)/px)*px, (Wchan/(2*px))*px, 0], [0, [0, 0, 1]]],
+    ["cube", [Wchan, eps*px, hchan], [0, -Wchan, 0], [0, [0, 0, 1]]],
+];
 
-        pi_2 = [22*px, 25*px, 0];
-        pf_2 = [Wchan, 0, 0];
-        connect_2 = [
-                     ["+x", pf_2, 0]
-                    ];
-        routing(pi_2, connect_2, dim);
-  
-        pi_3 = [0, 0, 0];
-        pf_3 = [35.4*px, 0, 0];
-        connect_3 = [
-                     ["+x", pf_3, 0]
-                    ];
-        rotate(45)
-        routing(pi_3, connect_3, dim);  
-        
+    module obj(){
+        color("RosyBrown")
+            polychannel(params_relative, show_only_shapes=false);  
     }
     
     if (orientation == "FN"){
@@ -576,6 +534,12 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
 module valve_40px_1(xpos, ypos, zpos, orientation,
     px=22e-3, layer=10e-3, lpv=40, pitch=30, ren_lef=false)
 {
+    module tpx(x, y, z){
+        translate([x*px, y*px, z*layer])
+            children() ;
+    }
+    
+    tpx(1,1,5)
     p_valve(xpos, ypos, zpos, orientation,
         valve_r=20, mem_th=1, fl_chm_h=3, pn_chm_h=6, inport_center=true,
         out_len=44, fl_extra_sp = 4, fl_chan_down_layers=10, 
@@ -609,7 +573,7 @@ module valve_40px_1(xpos, ypos, zpos, orientation,
     px=22e-3, layer=10e-3, lpv=40, pitch=30, ren_lef=false)
 {
     p_valve(xpos, ypos, zpos, orientation,
-        valve_r=20, mem_th=1, fl_chm_h=6, pn_chm_h=6, inport_center=true,
+        valve_r=20, mem_th=1, fl_chm_h=10, pn_chm_h=8, inport_center=true,
         out_len=44, fl_extra_sp = 4, fl_chan_down_layers=10, 
         pn_extra_sp="fill", pn_chan_up_layers=12, rot_pn=false,
         extra_sp = 0, 
@@ -753,23 +717,7 @@ module pump_20_40_20px_0(xpos, ypos, zpos, orientation,
         lef_layer("met3")
         lef_obs("rect",  [25,30,305,160]);
         
-        lef_layer("met1")
-        lef_port("fluid_in", "INPUT", "rect", [24.5, 94.5, 25.5, 95.5]) ;
-        lef_layer("met1")
-        lef_port("fluid_out", "OUTPUT", "rect", [304.5, 94.5, 305.5, 95.5]) ;
         
-        lef_layer("met2")
-        lef_port("a_out_air", "OUTPUT", "rect", [89.5,159.5,90.5,160.5]) ;
-        lef_layer("met2")
-        lef_port("b_out_air", "OUTPUT", "rect", [164.5,159.5,165.5,160.5]) ;
-        lef_layer("met2")
-        lef_port("c_out_air", "OUTPUT", "rect", [239.5,159.5,240.5,160.5]) ;
-        lef_layer("met2")
-        lef_port("a_in_air", "INPUT", "rect", [89.5,29.5,90.5,30.5]) ;
-        lef_layer("met2")
-        lef_port("b_in_air", "INPUT", "rect", [164.5,29.5,165.5,30.5]) ;
-        lef_layer("met2")
-        lef_port("c_in_air", "INPUT", "rect", [239.5,29.5,240.5,30.5]) ;
     }
     if(ren_lef)
         lef();

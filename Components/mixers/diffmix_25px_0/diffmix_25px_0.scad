@@ -5,14 +5,14 @@ px = 0.022;
 layer = 0.01;
 
 module diffmix_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
-      
+    
     // Channel Dimensions
     hchan = 20*layer;
     Wchan = 9*px;
 
     eps = 0.01;
     params_relative = [    
-    ["cube", [1*px, Wchan, hchan], [-4.5*px, 30*px, 0], [0, [0, 0, 1]]],
+    ["cube", [1*px, Wchan, hchan], [-4.5*px, 30*px, ((hchan/2)/px)*px], [0, [0, 0, 1]]],
     ["cube", [1*px, Wchan, hchan], [39*px, 0, 0], [0, [0, 0, 1]]],
     ["cube", [1*px, Wchan, hchan], [-4.5*px, 0, 0], [45, [0, 0, 1]]],
     ["cube", [1*px, Wchan, hchan], [-30*px, -30*px, 0], [45, [0, 0, 1]]],
@@ -22,7 +22,8 @@ module diffmix_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     ["cube", [Wchan, eps*px, hchan], [0, -Wchan, 0], [0, [0, 0, 1]]],
 ];
     module obj(){
-        polychannel(params_relative, show_only_shapes=false);  
+        color("RosyBrown")
+            polychannel(params_relative, show_only_shapes=false);  
         
     }
     
