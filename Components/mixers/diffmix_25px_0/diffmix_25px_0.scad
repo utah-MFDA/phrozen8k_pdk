@@ -33,13 +33,13 @@ module diffmix_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     }
     if (orientation == "FN"){
         mirror([1, 0, 0])
-        translate([-2*30*px - xpos*px, 30*px + ypos*px, zpos*layer])
+        translate([-2*25*px - xpos*px, 30*px + ypos*px, zpos*layer])
         obj([1, 0, 0]);
     }
     if (orientation == "S"){
         mirror([1, 0, 0])
         mirror([0, 1, 0])
-        translate([-2*30*px - xpos*px, -2*30*px - ypos*px, zpos*layer])
+        translate([-2*25*px - xpos*px, -2*25*px - ypos*px, zpos*layer])
         obj();
     }
     if (orientation == "FS"){
@@ -47,7 +47,6 @@ module diffmix_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
         translate([30*px + xpos*px, -2*25*px - ypos*px, zpos*layer])
         obj();
     }
-   
 
     module lef()
     {

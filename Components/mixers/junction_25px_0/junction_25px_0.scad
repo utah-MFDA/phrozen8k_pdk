@@ -28,7 +28,7 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     }
     
     if (orientation == "FN"){
-        translate([25*px + xpos*px, 25*px + ypos*px, zpos*layer])
+        translate([15*px + xpos*px, 25*px + ypos*px, zpos*layer])
         obj();
     }
     if (orientation == "N"){
@@ -38,13 +38,13 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     }
     if (orientation == "S"){
         mirror([0, 1, 0])
-        translate([25*px + xpos*px, -2*25*px - ypos*px, zpos*layer])
+        translate([15*px + xpos*px, -2*20*px - ypos*px, zpos*layer])
         obj();
     }
     if (orientation == "FS"){
         mirror()
         mirror([0, 1, 0])
-        translate([-2*25*px - xpos*px, -2*25*px - ypos*px, zpos*layer])
+        translate([-2*25*px - xpos*px, -2*20*px - ypos*px, zpos*layer])
         obj();
     }
 

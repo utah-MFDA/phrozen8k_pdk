@@ -23,25 +23,25 @@ module valve_40px_1(xpos, ypos, zpos, orientation,
     
     module lef()
     {
-        //color("yellow")
-        //lef_size(180, 180);
+        color("yellow")
+        lef_size(180, 180);
         
-        //lef_layer("met1")
-        //lef_port("in_fluid", "INPUT", "RECT",  [20.5, 89.5, 21.5, 90.5]) ;
-        //lef_layer("met1")
-        //lef_port("out_fluid", "OUTPUT", "RECT", [151.5, 89.5, 152.5, 90.5]) ;
+        lef_layer("met1")
+        lef_port("in_fluid", "INPUT", "RECT",  [20.5, 89.5, 21.5, 90.5]) ;
+        lef_layer("met1")
+        lef_port("out_fluid", "OUTPUT", "RECT", [151.5, 89.5, 152.5, 90.5]) ;
         
-        //lef_layer("met2")
-        //lef_port("in_air", "INPUT", "RECT", [89.5, 24.5, 90.5, 25.5]) ;
-        //lef_layer("met2")
-        //lef_port("out_air", "OUTPUT", "RECT", [89.5, 154.5, 90.5, 155.5]) ;
+        lef_layer("met2")
+        lef_port("in_air", "INPUT", "RECT", [89.5, 24.5, 90.5, 25.5]) ;
+        lef_layer("met2")
+        lef_port("out_air", "OUTPUT", "RECT", [89.5, 154.5, 90.5, 155.5]) ;
         
-        //lef_layer("met1")
-        //lef_obs("RECT", [21, 25, 152, 155]) ;
-        //lef_layer("met2")
-        //lef_obs("RECT", [21, 25, 152, 155]) ;
-        //lef_layer("met3")
-        //lef_obs("RECT", [21, 25, 152, 155]) ;
+        lef_layer("met1")
+        lef_obs("RECT", [21, 25, 152, 155]) ;
+        lef_layer("met2")
+        lef_obs("RECT", [21, 25, 152, 155]) ;
+        lef_layer("met3")
+        lef_obs("RECT", [21, 25, 152, 155]) ;
     }
     if (ren_lef)
         lef() ;

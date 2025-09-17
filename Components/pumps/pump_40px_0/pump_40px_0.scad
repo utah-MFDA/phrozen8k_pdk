@@ -44,10 +44,10 @@ module pump_40px_0(xpos, ypos, zpos, orientation,
         
         lef_layer("met1")
         lef_obs("RECT", [25, 22, 275, 96]) ;
-        //lef_layer("met2")
-        //lef_obs("RECT", [25, 22, 275, 96]) ;
-        //lef_layer("met3")
-        //lef_obs("RECT", [25, 22, 275, 96]) ;
+        lef_layer("met2")
+        lef_obs("RECT", [25, 22, 275, 96]) ;
+        lef_layer("met3")
+        lef_obs("RECT", [25, 22, 275, 96]) ;
     }
     if (ren_lef)
         lef() ;

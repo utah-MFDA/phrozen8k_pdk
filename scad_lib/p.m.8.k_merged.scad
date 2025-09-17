@@ -432,13 +432,13 @@ module diffmix_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     }
     if (orientation == "FN"){
         mirror([1, 0, 0])
-        translate([-2*30*px - xpos*px, 30*px + ypos*px, zpos*layer])
+        translate([-2*25*px - xpos*px, 30*px + ypos*px, zpos*layer])
         obj([1, 0, 0]);
     }
     if (orientation == "S"){
         mirror([1, 0, 0])
         mirror([0, 1, 0])
-        translate([-2*30*px - xpos*px, -2*30*px - ypos*px, zpos*layer])
+        translate([-2*25*px - xpos*px, -2*25*px - ypos*px, zpos*layer])
         obj();
     }
     if (orientation == "FS"){
@@ -446,7 +446,6 @@ module diffmix_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
         translate([30*px + xpos*px, -2*25*px - ypos*px, zpos*layer])
         obj();
     }
-   
 
     module lef()
     {
@@ -490,7 +489,7 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     }
     
     if (orientation == "FN"){
-        translate([25*px + xpos*px, 25*px + ypos*px, zpos*layer])
+        translate([15*px + xpos*px, 25*px + ypos*px, zpos*layer])
         obj();
     }
     if (orientation == "N"){
@@ -500,13 +499,13 @@ module junction_25px_0(xpos, ypos, zpos, orientation, ren_lef=false){
     }
     if (orientation == "S"){
         mirror([0, 1, 0])
-        translate([25*px + xpos*px, -2*25*px - ypos*px, zpos*layer])
+        translate([15*px + xpos*px, -2*20*px - ypos*px, zpos*layer])
         obj();
     }
     if (orientation == "FS"){
         mirror()
         mirror([0, 1, 0])
-        translate([-2*25*px - xpos*px, -2*25*px - ypos*px, zpos*layer])
+        translate([-2*25*px - xpos*px, -2*20*px - ypos*px, zpos*layer])
         obj();
     }
 
@@ -550,9 +549,25 @@ module valve_40px_1(xpos, ypos, zpos, orientation,
     
     module lef()
     {
+        color("yellow")
+        lef_size(180, 180);
         
+        lef_layer("met1")
+        lef_port("in_fluid", "INPUT", "RECT",  [20.5, 89.5, 21.5, 90.5]) ;
+        lef_layer("met1")
+        lef_port("out_fluid", "OUTPUT", "RECT", [151.5, 89.5, 152.5, 90.5]) ;
         
+        lef_layer("met2")
+        lef_port("in_air", "INPUT", "RECT", [89.5, 24.5, 90.5, 25.5]) ;
+        lef_layer("met2")
+        lef_port("out_air", "OUTPUT", "RECT", [89.5, 154.5, 90.5, 155.5]) ;
         
+        lef_layer("met1")
+        lef_obs("RECT", [21, 25, 152, 155]) ;
+        lef_layer("met2")
+        lef_obs("RECT", [21, 25, 152, 155]) ;
+        lef_layer("met3")
+        lef_obs("RECT", [21, 25, 152, 155]) ;
     }
     if (ren_lef)
         lef() ;
@@ -717,7 +732,23 @@ module pump_20_40_20px_0(xpos, ypos, zpos, orientation,
         lef_layer("met3")
         lef_obs("rect",  [25,30,305,160]);
         
+        lef_layer("met1")
+        lef_port("fluid_in", "INPUT", "rect", [24.5, 94.5, 25.5, 95.5]) ;
+        lef_layer("met1")
+        lef_port("fluid_out", "OUTPUT", "rect", [304.5, 94.5, 305.5, 95.5]) ;
         
+        lef_layer("met2")
+        lef_port("a_out_air", "OUTPUT", "rect", [89.5,159.5,90.5,160.5]) ;
+        lef_layer("met2")
+        lef_port("b_out_air", "OUTPUT", "rect", [164.5,159.5,165.5,160.5]) ;
+        lef_layer("met2")
+        lef_port("c_out_air", "OUTPUT", "rect", [239.5,159.5,240.5,160.5]) ;
+        lef_layer("met2")
+        lef_port("a_in_air", "INPUT", "rect", [89.5,29.5,90.5,30.5]) ;
+        lef_layer("met2")
+        lef_port("b_in_air", "INPUT", "rect", [164.5,29.5,165.5,30.5]) ;
+        lef_layer("met2")
+        lef_port("c_in_air", "INPUT", "rect", [239.5,29.5,240.5,30.5]) ;
     }
     if(ren_lef)
         lef();
@@ -806,6 +837,10 @@ module pump_40px_0(xpos, ypos, zpos, orientation,
         lef_port("c_out_air", "OUTPUT", "RECT", [209.5, 95.5, 210.5, 96.5]) ;
         
         lef_layer("met1")
+        lef_obs("RECT", [25, 22, 275, 96]) ;
+        lef_layer("met2")
+        lef_obs("RECT", [25, 22, 275, 96]) ;
+        lef_layer("met3")
         lef_obs("RECT", [25, 22, 275, 96]) ;
     }
     if (ren_lef)
